@@ -1,0 +1,46 @@
+The two-player version of Construct rules:
+A Space is divided into two adjacent, 3D PlayerSpaces. 
+Each player’s goal is to build, using Blocks, the goal design, which is either randomly generated or predetermined, to achieve the maximal score. 
+The buildings are designed by moving and placing Blocks using Bots.
+The primary interface for controlling these Bots is through commands on a command line interface. 
+The command convention is:
+    1. Specify Bot number using int > 0
+    2. 1-character action specification 
+
+A Bot can Move, Scale/Climb, Mount, Pick-up, 
+Essentially, it’s a construction simulator built on a simple (x, y, z) grid and blocks, very similar to minecraft. The perspective for this message is top down st x,y is like the position on the ground.
+Before you start the game you get to decide the mode of game, random or pre-picked design.
+If you go random, the game will generate a random design for a building given either an x,y space or a premade feature for the estimated length of the game. Either way, then you specify how many Bots you want to build the building. (if you take a ton of them, there will prob be a score decrease/multiplier)
+Then you start off with a flat plane and a place where Bots can go to obtain Blocks and you basically go and try to build the design via entering like command line inputs.
+Ex
+53 a 1.00 1.00 would represent Bot 53 accelerating maximally (scale of [-1, 1]), for one unit of time. 
+
+Think of Bots as basically entities that exist within a coordinate grid, even though it is physically impossible to have a Bot and Block exist in the same place, for the sack of simplicity, I’m gunna design it st a Bot and Block can occupy the same space. 
+The actions that define a Bot are: accelerating, scaling another Block, picking up a Block, depositing a Block, depositing a Block on top of another.
+So if u think about minecraft, you can kind of visualize entering a bunch of commands to tell these bots where to go with a lot of specificity. It would be a pretty complex game from the player size, but if the xy grid was like [0,0] <= (x, y) <= 15, and had the building height be like 0 <= z <= 10, it wouldn’t  be a super long game. 
+
+My purpose for making this game is really to have incredibly large grids to train neural networks, however, I think that with some UI and additional features, it could be pretty fun. Especially if there is a constraint to the number of commands you can make, like the your score in the end will be higher if you use less commands, it will be a very thoughtful and decisive game. Parts of Go, parts of Civ, and parts of FTL.
+
+I’ve been delving into the physics that I want the system to use and it’s going to be almost as abstracted as possible. Basically, you have a max velocity for rotational and translational motion, as well as a corresponding max acceleration (don’t want the ai to learn to fuck with relativity lol).
+
+Turning mechanics i’ll probably do after simple 3d vector movements, but I think that turning will be really interesting. Like, when I walk to class, I always either consciously or subconsciously try to optimize my path, and there are a crazy amount of parameters that vary those subsequent decisions. Ideally, from my house to class, I want a direct shot, but there are bushes, streets, etc blocking my way. Now, if the space is really busy, accounting for the movement of other people has a ton of parameters to account for.
+Making the right call in the game as to how to send Bots out will require a ton of forethought. Also, since you don’t want the actual game to be super mathy, more user friendly actions need to be added. I was thinking stuff like a mode that allows for interplay between the two players. Like the two players building Spaces are adjacent and you can divert ur Bots to messing up with the opponents Bots. You could even place some of ur Blocks in their Space but idk these ideas are off the cuff.
+
+The scoring mechanics would be defined by how many Bots you choose to use, the amount of time it took to complete the design, and the number of commands you used.
+
+this looks interesting. ill also say that my motivation is def more prioritizing a framework that allows me to easily train on, hence the command line interface. like i was actually thinking of just displaying a color coded grid of (a x b). Like if a given coordinate is occupied by a Bot, its blue. if Bot and Block, Purple, if Block not Bot, Red. 
+Cuz I don’t have any idea how to do the graphics, and I’m not sure that if Unity would be even an efficient way to execute this. So I figured id get ur thoughts n see what u think.
+
+Another idea I had is maybe part of the game is a pregame where you have to strategize the specific bots that you want to play.
+Maybe there are classes of bots and now you have the additional task of trying to analyze the design or predict the design and the optimal Bot models that you want to use to accomplish the task
+Bot types:
+General
+Dirt
+Jumper
+
+
+
+
+material neutral spaces.
+The robots must now have the capability to dig and transport dirt. We now have another resource: an oven to make Blocks. 
+

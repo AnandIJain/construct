@@ -1,0 +1,11 @@
+
+3 vector for each position, need to check if its filled.
+
+2 bots cant overlap
+2 blocks cant overlap
+
+by the end every drop block must be filled
+
+each turn the agent can move one space over horizontally 
+
+
