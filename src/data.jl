@@ -1,6 +1,6 @@
 # peering into InSight data
-
-using CSV, DataFrames
+using CSV
+using DataFrames
 function read_temp_wind_data()
     # data found at https://atmos.nmsu.edu/data_and_services/atmospheres_data/INSIGHT/insight.html#Selecting_Data
     # placed in parent dir/data
